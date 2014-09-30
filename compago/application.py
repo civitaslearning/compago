@@ -6,14 +6,7 @@ import traceback
 from compago import Option, Command, CommandError
 from compago.plugin import PluginManager
 
-try:
-    import compago_plugins
-except ImportError, e:
-    compago_plugins = None
-    DEFAULT_PLUGINS = []
-else:
-    DEFAULT_PLUGINS = [compago_plugins.LoggingPlugin(),
-                       compago_plugins.ConfigPlugin()]
+DEFAULT_PLUGINS = []
 
 
 logger = logging.getLogger(__name__)
@@ -34,7 +27,6 @@ class Application(object):
         self.plugin_manager = PluginManager(self)
         for plugin in self.default_plugins:
             self.add_plugin(plugin)
-        self.plugin_manager.run_hook('after_application_init')
 
     @property
     def parser(self):
@@ -95,6 +87,8 @@ class Application(object):
     def run(self, args=None, default=None):
         logger.debug('Running application with args:%s, default:%s' % (
                 args, default))
+
+        self.plugin_manager.run_hook('after_application_init')
 
         if not args:
             logger.debug('args is None, so using sys.argv')

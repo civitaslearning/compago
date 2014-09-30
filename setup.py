@@ -1,7 +1,7 @@
 import sys
 from setuptools import setup, find_packages
 
-install_requires = ['versiontools']
+install_requires = ['versiontools', 'pyyaml']
 if sys.version_info[0] == 2 and sys.version_info[1] < 7:
   install_requires.append('argparse')
 
