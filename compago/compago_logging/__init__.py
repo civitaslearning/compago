@@ -45,7 +45,7 @@ class LoggingPlugin(Plugin):
         application.add_option('--log', dest='do_log', action='store_true', default=False,
                                help='If --log is not specified, logging will not occur.')
         application.add_option('--logfile', dest='logfile',
-                               metavar='PATH', dest='logfile', default=application.name,
+                               metavar='PATH', default=application.name,
                                help='Optional path to the logfile. Default: {0}.log'.format(
                                    application.name))
         if not application.do_log:
