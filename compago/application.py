@@ -112,7 +112,7 @@ class Application(object):
             logger.debug('Command:%s not in app.commands:%s' % (
                     cmd, self.commands))
             print self.usage
-            sys.exit(0)
+            sys.exit(1)
 
         logger.debug('Removing command:%s from args:%s' % (cmd, args))
         args.remove(cmd)
