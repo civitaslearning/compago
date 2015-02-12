@@ -11,7 +11,7 @@ setup(
     author = 'Justin Mohr',
     author_email = 'jmohr@bytepulse.net',
     packages = find_packages(exclude=['*.test.*', '*.test']),
-    version = ':versiontools:compago:',
+    version = '1.4',
     install_requires = install_requires,
     license = 'BSD',
     url = 'http://github.com/jmohr/compago',
