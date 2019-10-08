@@ -26,7 +26,7 @@ class Option(object):
 
     def __repr__(self):
         args = ', '.join([repr(a) for a in self.args])
-        kwargs = ', '.join(['%s=%s' % (k,repr(v)) for k,v in self.kwargs.items()])
+        kwargs = ', '.join(['%s=%s' % (k,repr(v)) for k,v in list(self.kwargs.items())])
         if args:
             if kwargs:
                 val = ', '.join((args, kwargs))
@@ -36,4 +36,4 @@ class Option(object):
             val = kwargs
         else:
             val = ''
-        return u"Option(%s)" % (val)
+        return "Option(%s)" % (val)

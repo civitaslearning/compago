@@ -3,8 +3,9 @@ import logging
 import sys
 import traceback
 
-from compago import Option, Command, CommandError
-from compago.plugin import PluginManager
+from .command import Command, CommandError
+from .option import Option
+from .plugin import PluginManager
 
 DEFAULT_PLUGINS = []
 
@@ -43,7 +44,7 @@ class Application(object):
             pad = max([len(c) for c in self.commands]) + 2
             fmt = '  %%-%ds%%s' % pad
             usage.append('commands:\n')
-            for name, cmd in self.commands.items():
+            for name, cmd in list(self.commands.items()):
                 usage.append(fmt % (name, cmd.description))
             usage.append('\nType %s <command> --help for specific usage.' % self.name)
         return '\n'.join(usage)
@@ -53,7 +54,7 @@ class Application(object):
         logger.debug('Adding app-level option:%s' % option)
         self.options.append(option)
         app_ns, remainder = self.parser.parse_known_args(sys.argv)
-        for k,v in app_ns.__dict__.items():
+        for k,v in list(app_ns.__dict__.items()):
             #setattr(self, k, v)
             self.args[k] = v
         self.plugin_manager.run_hook('option_added', option)
@@ -111,7 +112,7 @@ class Application(object):
         if cmd not in self.commands:
             logger.debug('Command:%s not in app.commands:%s' % (
                     cmd, self.commands))
-            print self.usage
+            print(self.usage)
             sys.exit(1)
 
         logger.debug('Removing command:%s from args:%s' % (cmd, args))
@@ -127,9 +128,9 @@ class Application(object):
             result = self.commands[cmd].run(*args)
             self.plugin_manager.run_hook('after_command_run', self.commands[cmd])
             return result
-        except CommandError, e:
+        except CommandError as e:
             logger.error('Command failed: %s' % e)
             logger.error(traceback.format_exc())
-            print self.usage
-            print '\nERROR: %s' % e
+            print(self.usage)
+            print('\nERROR: %s' % e)
             sys.exit(1)

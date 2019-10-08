@@ -1,5 +1,5 @@
-__version__ = (1, 4, 1)
+__version__ = (2, 0, 0)
 
-from option import Option
-from command import Command, CommandError
-from application import Application, ApplicationError
+from .option import Option
+from .command import Command, CommandError
+from .application import Application, ApplicationError

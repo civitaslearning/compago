@@ -1,7 +1,7 @@
 from UserDict import DictMixin
 import os
 import yaml
-from compago.plugin import Plugin
+from ..plugin import Plugin
 
 
 class Config(DictMixin):
@@ -25,7 +25,7 @@ class Config(DictMixin):
             raise Exception('{0} is not configured.'.format(key))
 
     def keys(self):
-        return self.attributes.keys()
+        return list(self.attributes.keys())
 
 
 class ConfigPlugin(Plugin):

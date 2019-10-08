@@ -1,6 +1,6 @@
 import logging
 import logging.handlers
-from compago.plugin import Plugin
+from ..plugin import Plugin
 
 
 class LoggingPlugin(Plugin):
@@ -64,5 +64,3 @@ class LoggingPlugin(Plugin):
             application.logger.removeHandler(handler)
         root_logger.addHandler(hdlr)
         root_logger.info('Logging plugin loaded.')
-
-

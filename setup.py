@@ -11,7 +11,7 @@ setup(
     author = 'Justin Mohr',
     author_email = 'jmohr@bytepulse.net',
     packages = find_packages(exclude=['*.test.*', '*.test']),
-    version = '1.4',
+    version = '2.0',
     install_requires = install_requires,
     license = 'BSD',
     url = 'http://github.com/jmohr/compago',
@@ -22,5 +22,7 @@ setup(
         'Intended Audience :: Developers',
         'License :: OSI Approved :: BSD License',
         'Topic :: Software Development',
+        'Programming Language :: Python :: 3',
+        'Programming Language :: Python :: 3.7',
     ]
 )

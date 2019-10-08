@@ -21,7 +21,7 @@ app = compago.Application()
 @app.command
 def do_something():
     '''This description will show up in the --help. Try it!'''
-    print 'Something is happening!'
+    print('Something is happening!')
     return 123
 
 # Finally, tell the app to run

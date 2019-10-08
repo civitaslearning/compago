@@ -42,7 +42,7 @@ class TestCommand(object):
             pass
         cmd = Command(target)
         u = cmd.usage
-        print u
+        print(u)
         assert 'aaa' in u
         assert '--bbb BBB' in u
         assert '-b BBB' in u

@@ -25,7 +25,7 @@ class Config(DictMixin):
             raise Exception('{0} is not configured.'.format(key))
 
     def keys(self):
-        return self.attributes.keys()
+        return list(self.attributes.keys())
 
 
 class ConfigPlugin(Plugin):
